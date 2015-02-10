@@ -1,0 +1,33 @@
+notes:
+
+
+step 0 - install ChefDK
+
+step 1 - setup AWS
+  generate keypair
+  populate ~/.aws/config
+  place aws key .pem file under .chef/keys in your chef repo
+
+step 2 - test aws connectivity
+  easiest way is with knife ec2 plugin
+  chef gem install knife-ec2
+  modify .chef/knife.rb with same keypair as in ~/.aws/config
+
+  example:
+    knife[:aws_access_key_id] = 'xxxxxxxxxx'
+    knife[:aws_secret_access_key] = 'yyyyyyy'
+    knife[:region] = 'us-west-2'
+
+  execute successfully:
+    knife ec2 server list
+
+step 3 - use the repo to play with chef-provisioning.
+
+  create infrastructure:
+    chef-client -r 'recipe[webserver::provision]' -z
+
+  remove infrastructure:
+    chef-client -r 'recipe[webserver::deprovision]' -z
+
+step 4 - uncomment various portions of the code and see what it does.
+

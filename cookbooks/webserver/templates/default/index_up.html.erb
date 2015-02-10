@@ -1,0 +1,17 @@
+<html>
+ <body>
+  <h1>Hello from <%= node.name %></h1>
+  <h2>public_hostname: <%= node.cloud_v2.public_hostname %></h2>
+  <h2>public_ip:       <%= node.cloud_v2.public_ipv4 %></h2>
+  <h2>local_hostname:  <%= node.cloud_v2.local_hostname %></h2>
+  <h2>local_ip:        <%= node.cloud_v2.local_ipv4 %></h2>
+
+<p>The other webservers on this load balancer are:
+   <ul>
+   <% @machines.reject { |machine| machine.name == node.name }.each do |machine| %>
+   <li><%= machine.name %></li>
+   <% end %>
+   </ul>
+   </p>
+ </body>
+</html>

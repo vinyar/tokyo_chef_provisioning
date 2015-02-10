@@ -1,0 +1,8 @@
+{
+  "id": "alexv-webserver-lb",
+  "location": {
+    "driver_url": "aws",
+    "driver_version": "0.2.1",
+    "allocated_at": "2015-02-10 10:43:09 UTC"
+  }
+}
